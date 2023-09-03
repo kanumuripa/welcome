@@ -3,7 +3,7 @@ FROM eclipse-temurin:11-jdk-jammy
 WORKDIR /app
 
 COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+COPY mvn pom.xml ./
 #RUN ./mvnw dependency:resolve
 
 COPY webapp/src ./src
