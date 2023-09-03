@@ -1,36 +1,10 @@
-FROM eclipse-temurin:11-jdk-jammy
- 
-WORKDIR /app
+FROM openjdk:11-alpine
 
-COPY .mvn/ .mvn
-COPY mvn pom.xml ./
-#RUN ./mvnw dependency:resolve
-
-COPY webapp/src ./src
-
-#CMD ["./mvnw", "-Dspring.profiles.active=mysql", "spring-boot:run"]
-CMD ["./mvnw", "spring-boot:run"]
+COPY /webapp/target/*.war /webapp.war
 
 
+CMD ["java", "-jar", "webapp.war"]
 
-#FROM eclipse-temurin:11-jdk-alpine
-
-#ARG user=appuser
-#ARG group=appuser
-
-#RUN addgroup -S appuser && adduser -S $user -G appuser
-
-#COPY *.war /home/$user/app.war
-
-#RUN chown -R $user:$user /home/$user/
-
-#RUN chmod -R 755 /home/$user/
-
-#EXPOSE 8080
-
-#WORKDIR /home/$user
-
-#ENTRYPOINT ["java","-jar","app.war"]
 
 
 
