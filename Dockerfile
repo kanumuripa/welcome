@@ -5,7 +5,7 @@ ARG group=appuser
 
 RUN addgroup -S appuser && adduser -S $user -G appuser
 
-COPY *.jar app.jar
+COPY *.war app.war
 
 RUN chown -R $user:$user /home/$user/
 
@@ -15,7 +15,7 @@ EXPOSE 8080
 
 WORKDIR /home/$user
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app.war"]
 
 
 
