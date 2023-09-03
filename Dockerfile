@@ -6,7 +6,7 @@ COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:resolve
 
-COPY src ./src
+COPY webapp/src ./src
 
 #CMD ["./mvnw", "-Dspring.profiles.active=mysql", "spring-boot:run"]
 CMD ["./mvnw", "spring-boot:run"]
